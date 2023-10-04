@@ -17,7 +17,8 @@ public class SexyStreams implements streamOrLoop{
 
     @Override
     public int averageIntOfList(List<Integer> array) {
-        return 0;
+        return array.stream().mapToDouble(Integer::doubleValue).average().stream().mapToInt();
+
     }
 
     @Override
