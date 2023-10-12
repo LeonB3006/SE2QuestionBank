@@ -8,6 +8,8 @@ import java.util.List;
 
 public class TestSexyStreams {
 
+    /*** Tests for averageIntOfList() ***/
+
     streamOrLoop sut = new SexyStreams();
 
     @Test
@@ -27,4 +29,60 @@ public class TestSexyStreams {
             final int result = sut.averageIntOfList(List.of());
         });
     }
+
+
+
+    /*** Tests for removeListDuplicates() ***/
+
+    @Test
+    void testRemoveListDuplicates() {
+        final List<Integer> myList = List.of(1,2,3,3,4,5,7,4,3);
+        final List<Integer> resultList = sut.removeListDuplicates(myList);
+        assert resultList.equals(List.of(1,2,3,4,5,7));
+
+    }
+
+    @Test
+    void testRemoveListDuplicatesNoDuplicates() {
+        final List<Integer> myList = List.of(1,2,3,45,67,876);
+        final List<Integer> resultList = sut.removeListDuplicates(myList);
+        assert resultList.equals(myList);
+
+    }
+
+
+    @Test
+    void testRemoveListDuplicatesEmpty() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            final List<Integer> result = sut.removeListDuplicates(List.of());
+        });
+
+    }
+
+
+    /*** Tests for countStringOccurrence() ***/
+
+
+    @Test
+    void countStringOccurrence() {
+        final List<String> myList = List.of("Pickles", "pringles", "lays", "pizza", "Leeks");
+        final int resultCount = sut.countStringOccurrence(myList, 'p');
+        assert resultCount == 3;
+
+    }
+
+    @Test
+    void countStringOccurrenceZero() {
+        final List<String> myList = List.of("Pickles", "pringles", "lays", "pizza", "Leeks");
+        final int resultCount = sut.countStringOccurrence(myList, 'z');
+        assert resultCount == 0;
+
+    }
+
+    @Test
+    void countStringOccurrenceEmpty() {
+        final int resultCount = sut.countStringOccurrence(List.of(), 'c');
+        assert resultCount == 0;
+    }
+
 }

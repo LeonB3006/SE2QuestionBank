@@ -14,7 +14,9 @@ public interface streamOrLoop {
     List<Integer> removeListDuplicates(List<Integer> myNumbers);
 
     /***
-     * Function should receive list of strings and count the number starting with startLetter
+     * Function should receive list of strings and count the number starting with startLetter.
+     * UpperCase & Lowercase should not be differentiated.
+     * Empty Lists are allowed
      */
     int countStringOccurrence(List<String> myStringSequence, char startLetter);
 
