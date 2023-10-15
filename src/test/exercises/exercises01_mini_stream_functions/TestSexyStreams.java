@@ -5,6 +5,7 @@ import exercises.exercise01_mini_stream_functions.streamOrLoop;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.Optional;
 
 public class TestSexyStreams {
 
@@ -84,5 +85,58 @@ public class TestSexyStreams {
         final int resultCount = sut.countStringOccurrence(List.of(), 'c');
         assert resultCount == 0;
     }
+
+
+    /*** Tests for calculateDigitSum ***/
+
+    @Test
+    void calculateDigitSumNormal() {
+        final int myDigits = 1223;
+        final int resultCount = sut.calculateDigitSum(myDigits);
+        assert resultCount == 8;
+
+    }
+
+    @Test
+    void calculateDigitSumAllDigitsEqual() {
+        final int myDigits = 999999;
+        final int resultCount = sut.calculateDigitSum(myDigits);
+        assert resultCount == 54;
+
+    }
+
+
+    @Test
+    void calculateDigitSumAllDigitsZero() {
+        final int myDigits = 000;
+        final int resultCount = sut.calculateDigitSum(myDigits);
+        assert resultCount == 0;
+
+    }
+
+    /*** Tests for flipList ***/
+
+    @Test
+    void flipListNormal() {
+        final List<Integer> myList = List.of(1,2,2,6,7);
+        final Optional<List<Integer>> resultList = sut.flipList(myList);
+        assert resultList.isPresent();
+        assert resultList.get().equals(List.of(7,6,2,2,1));
+
+    }
+
+    @Test
+    void flipListNormalEmptyList() {
+        final List<Integer> myList = List.of();
+        final Optional<List<Integer>> resultList = sut.flipList(myList);
+        assert resultList.isPresent();
+        assert resultList.get().equals(List.of());
+
+    }
+
+
+
+
+
 
 }
