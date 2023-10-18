@@ -1,9 +1,12 @@
 package exercises.exercise01_mini_stream_functions;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import org.hamcrest.Condition;
+import org.xml.sax.helpers.XMLReaderFactory;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class SexyStreams implements streamOrLoop{
     /***
@@ -17,32 +20,57 @@ public class SexyStreams implements streamOrLoop{
 
     @Override
     public int averageIntOfList(List<Integer> array) {
-        return 0;
+
+        if(array.isEmpty())
+            throw new IllegalArgumentException();
+
+        return array.stream().mapToInt(Integer::intValue)
+                .average()
+                .stream().mapToLong(Math::round).mapToInt(i -> (int) i)
+                .findAny().getAsInt();
+
     }
 
     @Override
     public List<Integer> removeListDuplicates(List<Integer> myNumbers) {
-        return Collections.emptyList();
+
+        if(myNumbers.isEmpty())
+            throw new IllegalArgumentException();
+
+        return myNumbers.stream().distinct().toList();
     }
 
     @Override
     public int countStringOccurrence(List<String> myStringSequence, char startLetter) {
-        return 0;
+        return (int)myStringSequence.stream()
+                .map(String::toLowerCase)
+                .filter(x -> x.startsWith(String.valueOf(startLetter)))
+                .count();
+
     }
 
     @Override
     public int calculateDigitSum(int myInt) {
-        return 0;
+        return IntStream.iterate(1, n -> 10*n )
+                .takeWhile(n -> n < myInt)
+                .map(n-> myInt/n)
+                .map(n-> n % 10)
+                .sum();
+
     }
 
     @Override
     public void printAllMultiplications(int myNumber) {
-
+        IntStream.range(1, myNumber+1)
+                .flatMap (x -> IntStream.range(1, myNumber + 1).map(y -> y * x))
+                .forEach(System.out::println);
     }
 
     @Override
     public Optional<List<Integer>> flipList(List<Integer> myList) {
-        return Optional.empty();
+        return Optional.of( myList.stream()
+                .sorted((x,y) -> -1) // y immer größer als x -> 1. Element ist das größte -> landet ganz rechts
+                .toList());
     }
 
 
