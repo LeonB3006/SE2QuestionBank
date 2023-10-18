@@ -1,9 +1,9 @@
 package exercises.exercise01_mini_stream_functions;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 public class SexyStreams implements streamOrLoop{
     /***
@@ -17,33 +17,48 @@ public class SexyStreams implements streamOrLoop{
 
     @Override
     public int averageIntOfList(List<Integer> array) {
-        return 0;
+        try{
+            double answer = array.stream().mapToDouble(Integer::doubleValue).average().orElseThrow(); // kann man das schöner machen?
+            return (int)answer;
+        }catch (NoSuchElementException e){
+            throw new IllegalArgumentException(e);
+        }
+
     }
 
     @Override
     public List<Integer> removeListDuplicates(List<Integer> myNumbers) {
-        return Collections.emptyList();
+        if (myNumbers.isEmpty())
+            throw new IllegalArgumentException();
+        else
+            return myNumbers.stream().distinct().toList();
+
     }
 
     @Override
     public int countStringOccurrence(List<String> myStringSequence, char startLetter) {
-        return 0;
+        long number = myStringSequence.stream().filter(n -> n.toLowerCase().charAt(0) == Character.toLowerCase(startLetter)).count(); // Kann man alles in einer zeile machen?
+        return (int)number;
     }
 
     @Override
     public int calculateDigitSum(int myInt) {
-        return 0;
+         return Arrays.stream(Integer.toString(myInt).split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
     @Override
     public void printAllMultiplications(int myNumber) {
+        Stream.iterate(0, n -> n+1).limit(myNumber).map(n -> n*n).forEach(System.out::println);
 
     }
 
     @Override
     public Optional<List<Integer>> flipList(List<Integer> myList) {
-        return Optional.empty();
+        return myList.reversed()
+                .stream()
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Optional::of));
     }
-
 
 }
