@@ -14,25 +14,24 @@ public class StreamsSummary {
 
         List<Integer> myList = List.of(1,2,3,4);
 
-        // Generator -> Inter. -> Terminal
-
         /*** How to use Optional<*> ***/
 
-//        Optional<Person> myDude = Optional.of(null);
+        Optional<Person> myDude = Optional.ofNullable(null);
+        // .of(T) does not allow T to be null, the end result of .of() and .ofNullable() is however the same
 
-        Optional<Person> myGuy = Optional.of(new Person(19));
+        Optional<Person> myGuy = Optional.ofNullable(new Person(19));
 
-//        if (myDude.isPresent()) {
-//            System.out.println(myDude.get().age()); // Won't Print
-//        }
+        if (myDude.isPresent()) {
+            System.out.println(myDude.get().age()); // Won't Print
+        }
 
-//        if (myGuy.isPresent()) {
-//            System.out.println(myGuy.get().age()); // WIll Print
-//        }
+        if (myGuy.isPresent()) {
+            System.out.println(myGuy.get().age()); // WIll Print
+        }
 
-//        System.out.println(myDude.isPresent());
+        System.out.println(myDude.isPresent());
 
-//        IntStream.range(20,30).mapToObj(Person::new).filter(obj -> obj.age() < 10).findAny().orElse(new Person(0));
+        IntStream.range(20,30).mapToObj(Person::new).filter(obj -> obj.age() < 10).findAny().orElse(new Person(0));
 
 
 
@@ -99,12 +98,12 @@ public class StreamsSummary {
 
 
         // toList()
-        Stream.iterate(1, i -> i*2 + 1 ).limit(100).toList().stream().forEach(System.out::println);
+        Stream.iterate(1, i -> i*2 + 1 ).limit(10).toList().stream().forEach(System.out::println);
 
         // collect()
         IntStream.range(10, 30).mapToObj(Person::new).collect(Collectors.toCollection(ArrayList::new)).stream().forEach(System.out::println);
 
-        // Reduce()
+//        // Reduce()
         System.out.println(IntStream.range(1, 6).reduce(1, (a, b) -> a + b)); // = 5!
 
 
