@@ -1,15 +1,12 @@
 package test.exercises.exercises01_mini_stream_functions;
 
 import exercises.exercise01_mini_stream_functions.ExtendedSexyStreams;
-import exercises.exercise01_mini_stream_functions.SexyStreams;
 import exercises.exercise01_mini_stream_functions.extendedStreamOrLoop;
-import exercises.exercise01_mini_stream_functions.streamOrLoop;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
