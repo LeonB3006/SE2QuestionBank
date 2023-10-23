@@ -1,12 +1,7 @@
 package exercises.exercise01_mini_stream_functions;
 
-import org.hamcrest.Condition;
-import org.xml.sax.helpers.XMLReaderFactory;
-
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class SexyStreams implements streamOrLoop{
     /***
