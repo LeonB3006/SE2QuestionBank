@@ -120,6 +120,8 @@ public class TestSexyStreams {
     void flipListNormal() {
         final List<Integer> myList = List.of(1,2,2,6,7);
         final Optional<List<Integer>> resultList = sut.flipList(myList);
+        System.out.println(resultList.get());
+
         assert resultList.isPresent();
         assert resultList.get().equals(List.of(7,6,2,2,1));
 
@@ -134,9 +136,10 @@ public class TestSexyStreams {
 
     }
 
-
-
-
+    @Test
+    void testMyNumbersMatrix() {
+        sut.printAllMultiplications(9);
+    }
 
 
 }

@@ -1,9 +1,8 @@
 package exercises.exercise01_mini_stream_functions;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class SexyStreams implements streamOrLoop{
     /***
@@ -17,33 +16,41 @@ public class SexyStreams implements streamOrLoop{
 
     @Override
     public int averageIntOfList(List<Integer> array) {
-        return array.stream().mapToDouble(Integer::doubleValue).average().stream().mapToInt();
+        return (int) array.stream().mapToDouble(Integer::doubleValue).average().orElse(0);
 
     }
 
     @Override
     public List<Integer> removeListDuplicates(List<Integer> myNumbers) {
-        return Collections.emptyList();
+        return myNumbers.stream().distinct().toList();
     }
 
     @Override
     public int countStringOccurrence(List<String> myStringSequence, char startLetter) {
-        return 0;
+        return (int) myStringSequence.stream().filter(str -> str.charAt(0) == startLetter ||str.charAt(0) == String.valueOf(startLetter).toUpperCase().charAt(0)).count();
     }
 
     @Override
     public int calculateDigitSum(int myInt) {
-        return 0;
+        return IntStream.iterate(10, i->i * 10).takeWhile(theInt -> theInt < myInt * 10).reduce(0, (prev, curr) -> prev + ((myInt % curr) / (curr / 10)));
     }
 
     @Override
     public void printAllMultiplications(int myNumber) {
+        IntStream.range(1, myNumber +1).flatMap( num ->
+                IntStream.range(num, myNumber + 1).filter(currNum -> currNum > num)
+                        .peek(currNum -> System.out.println(num + "x" + currNum + "="+num*currNum))
+                        .map(currNum -> num*currNum)
 
+        );
     }
 
     @Override
     public Optional<List<Integer>> flipList(List<Integer> myList) {
-        return Optional.empty();
+
+//        Comparator<Integer> myReverseCom = (o1, o2) -> o2 - o1;
+        return Optional.of(myList.stream().sorted((o1, o2) -> o2 - o1).toList());
+
     }
 
 
