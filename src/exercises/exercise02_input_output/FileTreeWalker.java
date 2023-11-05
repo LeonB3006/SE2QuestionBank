@@ -2,6 +2,7 @@ package exercises.exercise02_input_output;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  *  Modifizieren Sie das Programm so, dass es die Dateien nach fallender
@@ -9,6 +10,8 @@ import java.io.IOException;
  */
 
 public class FileTreeWalker {
+
+
 
     public static void main(String[] args) throws IOException {
         new FileTreeWalker().walk(args[0]);
@@ -22,6 +25,7 @@ public class FileTreeWalker {
                     walk(file.getCanonicalPath());
                 else
                     process(file.getCanonicalPath(), (int) file.length());
+
     }
 
     void process(String name, int length) {

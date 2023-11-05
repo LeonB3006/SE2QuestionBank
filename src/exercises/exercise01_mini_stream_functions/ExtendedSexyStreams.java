@@ -31,7 +31,7 @@ public class ExtendedSexyStreams implements extendedStreamOrLoop{
 
     @Override
     public Optional<Integer> mostFrequentNumber(List<Integer> myNumbers) {
-        myNumbers.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+        myNumbers.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
         return Optional.empty();
     }
 
