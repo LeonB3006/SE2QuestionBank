@@ -1,5 +1,6 @@
 package exercises.exercise02_input_output;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 public interface FileAndPath {
@@ -10,7 +11,7 @@ public interface FileAndPath {
      * @param file1
      * @param file2
      */
-    void hemmingDistance(Path file1, Path file2);
+    void hemmingDistance(Path file1, Path file2) throws IOException;
 
     /***
      * Function should recieve the Paths to two text files, it converts the text of the first file into only lowercase
