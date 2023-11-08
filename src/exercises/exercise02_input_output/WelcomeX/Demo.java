@@ -34,24 +34,24 @@ public class Demo {
 
 
         //<<UNCOMMENT THIS DEMO TO TEST YOUR CODE>>
-//         try(Reader baseReader = new FileReader("<<YourAbsolutePathTo/RSPacketsEncrypted.txt>>");
-//             MrXReader myReader = new MrXReader(baseReader);
-//             PrintWriter myPrinter = new PrintWriter(System.out);
-//             PrintWriter myFileWriter = new MrXWriter(myPrinter)
-//             ) {
-//
-//             int line = myReader.read();
-//
-//             while (line > 10) {
-//
-//                 myFileWriter.print((char) line);
-//
-//                 line = myReader.read();
-//
-//                 ;
-//             }
-//
-//         }
+         try(Reader baseReader = new FileReader("/Users/leonbender/IdeaProjects/SE2QuestionBank/src/exercises/exercise02_input_output/WelcomeX/RSPacketsEncrypted.txt");
+             MrXReader myReader = new MrXReader(baseReader);
+             PrintWriter myPrinter = new PrintWriter(System.out);
+             PrintWriter myFileWriter = new MrXWriter(myPrinter)
+             ) {
+
+             int line = myReader.read();
+
+             while (line > 10) {
+
+                 myFileWriter.print((char) line);
+
+                 line = myReader.read();
+
+                 ;
+             }
+
+         }
 
 
 
