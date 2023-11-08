@@ -43,12 +43,8 @@ public class Demo {
              int line = myReader.read();
 
              while (line > 10) {
-
                  myFileWriter.print((char) line);
-
                  line = myReader.read();
-
-                 ;
              }
 
          }

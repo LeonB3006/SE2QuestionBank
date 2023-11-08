@@ -8,14 +8,13 @@ import java.util.stream.Stream;
 
 public class MrXReader extends FilterReader {
 
-    static int counter = 0;
     /**
      * Creates a new filtered reader.
      *
      * @param in a Reader object providing the underlying stream.
      * @throws NullPointerException if {@code in} is {@code null}
      */
-    protected MrXReader(Reader in) {
+    public MrXReader(Reader in) {
         super(in);
     }
 

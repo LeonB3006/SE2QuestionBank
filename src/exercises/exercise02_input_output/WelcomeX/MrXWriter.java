@@ -11,9 +11,6 @@ public class MrXWriter extends PrintWriter {
         super(out);
     }
 
-
-
-
     @Override
     public void print(char c) {
         if (myCount < 2) {
