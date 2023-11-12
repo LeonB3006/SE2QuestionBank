@@ -38,7 +38,7 @@ public class TestJosephus {
         final List<String> fst = josephus.hailTheKing(2, 1);
         Assertions.assertEquals(List.of("Alberich"), fst);
 
-        final List<String> snd = josephus.hailTheKing(2, 1);
+        final List<String> snd = josephus.hailTheKing(2, 2);
         Assertions.assertEquals(List.of("Alberich", "Edda"), snd);
 
         final List<String> thd = josephus.hailTheKing(1, 1);
