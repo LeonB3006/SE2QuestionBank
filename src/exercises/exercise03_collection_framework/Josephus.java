@@ -15,8 +15,4 @@ public record Josephus(List<String> prisoners) {
     public List<String> prisoners() {
         throw new UnsupportedOperationException("Not implemented.");
     }
-
-    private List<String> copyList(List<String> list) {
-        throw new UnsupportedOperationException("Not implemented.");
-    }
 }
