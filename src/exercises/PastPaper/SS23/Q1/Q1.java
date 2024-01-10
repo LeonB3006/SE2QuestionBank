@@ -9,6 +9,8 @@ import java.util.Iterator;
  * 2) Write the corresponding Unit Tests and attain 100% Bracnh Coverage
  */
 
+/*
 public class Q1 implements Iterator<"<ATTENTION CHANGE ACOORDINGLY>"> {
 
 }
+*/

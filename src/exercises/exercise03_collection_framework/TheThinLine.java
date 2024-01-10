@@ -1,36 +1,72 @@
 package exercises.exercise03_collection_framework;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class TheThinLine<T> implements ThinLine<T> {
+    private final T defaultValue;
+
+    //private final ArrayList<Map<Integer, T>> internalList = new ArrayList<>();
+    private final Map<Integer, T> internalList = new HashMap<>();
+
     public TheThinLine() {
-        throw new UnsupportedOperationException("Not implemented.");
+        defaultValue = null;
     }
 
     public TheThinLine(T defaultValue) {
-        throw new UnsupportedOperationException("Not implemented.");
+        this.defaultValue = defaultValue;
     }
 
     @Override
     public void replace(int index, T value) {
-        throw new UnsupportedOperationException("Not implemented.");
+        if (index < 0) throw new IllegalArgumentException();
+
+        if(value.equals(defaultValue)) {
+            internalList.remove(index);
+            return;
+        };
+
+        internalList.put(index, value);
     }
 
     @Override
     public void insert(int index, T value) {
-        throw new UnsupportedOperationException("Not implemented.");
+        if (index < 0) throw new IllegalArgumentException();
+
+        if(value.equals(defaultValue)) return;
+
+        internalList.put(index, value);
+
     }
 
     @Override
     public T read(int index) {
-        return null;
+        if (index < 0) throw new IllegalArgumentException();
+
+
+        T value = internalList.getOrDefault(index, defaultValue);
+
+        return value;
+
+
     }
 
     @Override
     public T delete(int index) {
+        if (index < 0) throw new IllegalArgumentException();
+
+        internalList.remove(index);
+
         return null;
     }
 
     @Override
     public int lastAt() {
-        return 0;
+        if (internalList.size()<1) return -1;
+        int value = Collections.max(internalList.entrySet(), Map.Entry.comparingByKey()).getKey();
+
+
+        return value;
     }
 }
